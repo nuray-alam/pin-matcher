@@ -108,3 +108,6 @@ input[type="text"]:focus {
 #matched {
   display: none;
 }
+.button:hover {
+  background-color: tomato;
+}
