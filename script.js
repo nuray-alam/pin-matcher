@@ -18,10 +18,8 @@ function getNumber(value) {
 // delete function
 function deleteOneDigit() {
     let currentInput = document.getElementById('input-display');
-    const currentInputNumber = currentInput.value;
-    const indexOfLastDigitOfInput = (currentInput.value).length;
-    currentInput.value = '';
-
+    const updatedInput = (currentInput.value).slice(0, -1);
+    currentInput.value = updatedInput;
 }
 
 // clear input function
@@ -29,12 +27,29 @@ function clearInput() {
     document.getElementById('input-display').value = '';
 }
 
+function changeDisplayProperty(id, property) {
+    document.getElementById(id).style.display = property;
+}
+
+let numberOfAttempt = 0;
+
 // varify pin function
 function varifyPin() {
-    if (document.getElementById('generated-pin-display').value == document.getElementById('input-display').value) {
-        document.getElementById('matched').style.display = 'block';
+    numberOfAttempt++;
+    if (document.getElementById('generated-pin-display').value == document.getElementById('input-display').value && numberOfAttempt <= 3) {
+        changeDisplayProperty('matched', 'block');
+        changeDisplayProperty('not-matched', 'none');
+        changeDisplayProperty('left-console', 'none');
+        changeDisplayProperty('right-console', 'none');
+    }
+    else if(numberOfAttempt == 3){
+        changeDisplayProperty('not-matched', 'block');
+        changeDisplayProperty('left-console', 'none');
+        changeDisplayProperty('right-console', 'none');
     }
     else {
-        document.getElementById('not-matched').style.display = 'block';
+        changeDisplayProperty('not-matched', 'block');;
+        changeDisplayProperty('matched', 'none');
+        document.getElementById('attempt-left').innerText = (3 - numberOfAttempt) + ' try left';
     }
 }

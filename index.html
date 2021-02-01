@@ -11,13 +11,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <div class="pin-generator half-width">
+                <div class="pin-generator half-width" id="left-console">
                     <input class="form-control" type="text" id="generated-pin-display">
                     <button class="generate-btn" id="generate-button" onclick="generatePin()">Generate Pin</button>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="input-section half-width">
+                <div class="input-section half-width" id="right-console">
                     <input class="form-control" type="text" id="input-display">
                     <div class="numbers">
                         <div class="calc-body">
@@ -43,7 +43,7 @@
                             </div>
                             <div>
                                 <button type="submit" class="submit-btn" onclick="varifyPin()">Submit</button>
-                                <p class="action-left">3 try left</p>
+                                <p class="action-left" id="attempt-left">3 try left</p>
                             </div>
                     </div>
                 </div>
